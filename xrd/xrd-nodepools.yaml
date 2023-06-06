@@ -1,0 +1,69 @@
+#example XRD for nodepools
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: compositenodepools.demo.anthos.com
+spec:
+  connectionSecretKeys:
+  - kubeconfig
+  group: demo.anthos.com
+  names:
+    kind: CompositeNodepool
+    plural: compositenodepools
+  claimNames: # this is what namespace scoped XRCs are called
+    kind: NodePool
+    plural: nodepools
+  versions:
+  - name: v1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              parameters:
+                description: "Parameters for creating a new node pool"
+                properties:
+                  managementPolicy:
+                    type: string
+                    default: FullControl #ObserveOnly
+                  clusterName:
+                    type: string
+                  location:
+                    type: string
+                  nodePoolName:
+                    type: string
+                  minNodeCount:
+                    type: integer
+                  nodeSize:
+                    type: string
+                  location:
+                    type: string
+                  #AWS Specific
+                  nodeRoleArn:
+                     type: string
+                  desiredSize:
+                    type: integer
+                  maxSize:
+                    type: integer
+                  subnetIds:
+                    items:
+                      type: string
+                    type: array
+                type: object
+          status:
+            type: object
+            description: "NodePool Status"
+            properties:
+              nodePoolStatus:
+                type: string
+    additionalPrinterColumns:
+    - name: nodePoolName
+      type: string
+      jsonPath: ".status.clusterName"
+    - name: nodePool
+      type: string
+      jsonPath: ".status.nodePoolStatus"
