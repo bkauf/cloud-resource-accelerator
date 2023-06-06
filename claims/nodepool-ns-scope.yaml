@@ -5,7 +5,7 @@ metadata:
   name: gkenodepool
 spec:
   compositionRef:
-    name: gcp-node-pool # Possible values gcp-node-pool, aws-eks-nodegroup, azure-aks-nodepool
+    name: gcp-gke-nodepool # Possible values: gcp-gke-nodepool, aws-eks-nodegroup, azure-aks-nodepool
   parameters:
     # managementPolicy: ObserveOnly
     clusterName: "cluster-1"
