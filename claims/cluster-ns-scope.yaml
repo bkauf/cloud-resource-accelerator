@@ -1,15 +1,15 @@
 apiVersion: demo.anthos.com/v1
 kind: Cluster
 metadata:
-  name: gke-cluster
+  name: cluster-1
   labels:
     cluster-owner: abc
 spec:
   compositionRef:
     name: cluster-gcp-gke  # Possible values cluster-gcp-gke, cluster-aws-eks, cluster-azure-aks
   parameters:
-    location: "us-east4"
-    clusterName: "gke-cluster"
+    location: "us-central1-c"
+    clusterName: "cluster-1"
     nodeSize: medium  # Possible values small, medium, large
     k8sVersion: "1.24"
     fleetProject: "111111" #GCP project ID
