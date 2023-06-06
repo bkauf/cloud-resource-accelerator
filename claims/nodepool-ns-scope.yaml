@@ -8,9 +8,9 @@ spec:
     name: gcp-node-pool # Possible values gcp-node-pool, aws-eks-nodegroup, azure-aks-nodepool
   parameters:
     # managementPolicy: ObserveOnly
-    clusterName: "bkauf-cluster7-nch5g-f9h8z"
+    clusterName: "cluster-1"
     nodePoolName: "pool4" # name of the nodepool
-    location: "East US"	
+    location: "us-central1-c"	
     nodeSize: medium  # Possible values small, medium, large
     minNodeCount: 1
     #AWS EKS specifics below, leave blank if not using EKS
