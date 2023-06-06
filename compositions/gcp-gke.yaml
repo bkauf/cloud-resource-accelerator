@@ -1,4 +1,4 @@
-#example creating a GKE on GCP cluster and node pool 
+#example of GKE on GCP with composition
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
@@ -30,6 +30,9 @@ spec:
           version: 1.26
           removeDefaultNodePool: true
     patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.clusterName
+      toFieldPath: metadata.annotations[crossplane.io/external-name]
     - type: FromCompositeFieldPath
       fromFieldPath: spec.parameters.k8sVersion
       toFieldPath: spec.forProvider.minMasterVersion
