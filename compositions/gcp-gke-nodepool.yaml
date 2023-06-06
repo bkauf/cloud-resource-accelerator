@@ -30,9 +30,6 @@ spec:
           #version: 1.25
           nodeConfig:
             - machineType: e2-medium
-              oauthScopes:
-                - https://www.googleapis.com/auth/cloud-platform
-              serviceAccount: 261832825633-compute@developer.gserviceaccount.com
     patches:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.parameters.nodePoolName
