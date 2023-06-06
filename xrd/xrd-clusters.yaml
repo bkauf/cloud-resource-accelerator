@@ -1,0 +1,102 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: compositeclusters.demo.anthos.com
+spec:
+  connectionSecretKeys:
+  - kubeconfig
+  group: demo.anthos.com
+  names:
+    kind: CompositeCluster
+    plural: compositeclusters
+  claimNames: # this is what namespace scoped XRCs are called
+    kind: Cluster
+    plural: clusters
+  versions:
+  - name: v1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              parameters:
+                description: AttachedClusterParameters is the cluster configs.
+                properties:
+                  managementPolicy:
+                      type: string
+                      default: FullControl #ObserveOnly 
+                  adminUsers:
+                    items:
+                      type: string
+                    type: array
+                  fleetProject:
+                    type: string
+                  k8sVersion:
+                    type: string
+                  minNodeCount:
+                    type: integer
+                  nodeSize:
+                    type: string
+                  externalName:
+                    type: string
+                  nodePoolName:
+                    type: string
+                  location:
+                    type: string
+                  clusterName: 
+                    type: string
+                  #AWS Sepecific 
+                  roleArn:
+                    type: string
+                  subnetIds:
+                    items:
+                      type: string
+                    type: array
+                  securityGroupIds:
+                    items:
+                      type: string
+                    type: array
+                  #Azure Specific
+                  resourceGroup:
+                    type: string
+                type: object
+          status:
+            type: object
+            description: A AttachedClusterStatus represents the observed state of
+              a Cluster.
+            properties:
+              odicIssuerUrl:
+                type: string
+              cluster:
+                type: string
+              clusterName:
+                type: string
+              clusterSelfLink:
+                type: string
+              controlPlaneStatus:
+                type: string
+              membershipId:
+                type: string
+              nodePoolStatus:
+                type: string
+              vpcId:
+                type: string
+              region:
+                type: string
+    additionalPrinterColumns:
+    - name: clusterName
+      type: string
+      jsonPath: ".status.clusterName"
+    - name: controlPlane
+      type: string
+      jsonPath: ".status.controlPlaneStatus"
+    - name: nodePool
+      type: string
+      jsonPath: ".status.nodePoolStatus"
+    - name: region
+      type: string
+      jsonPath: ".status.region"
