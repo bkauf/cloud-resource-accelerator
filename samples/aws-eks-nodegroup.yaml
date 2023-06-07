@@ -1,0 +1,23 @@
+apiVersion: eks.aws.gke.cloud.google.com/v1beta1
+kind: NodeGroup
+metadata:
+  annotations:
+    crossplane.io/external-name: eks-nodegroup # name of nodegroup
+  name: eks-nodegroup # name of nodegroup
+spec:
+  providerConfigRef: 
+    name: default-aws
+  forProvider:
+    clusterName: eks-cluster
+    nodeRoleArn: arn:aws:iam::50709938 # replace with node role ARN
+    region: us-east-1
+    scalingConfig:
+      - desiredSize: 1
+        maxSize: 6
+        minSize: 1
+    subnetIds: # replace with subnets of cluster
+      - subnet-0
+      - subnet-1
+      - subnet-2
+    instanceTypes:
+      - t3.small
