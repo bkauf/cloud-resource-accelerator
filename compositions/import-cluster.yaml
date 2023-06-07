@@ -21,7 +21,7 @@ spec:
     - subnet-2
     
     #Azure specifics below, leave blank if not using AKS
-    resourceGroup: bkauf
+    resourceGroup: abc
     dnsPrefix: akscluster
     defaultNodePoolName: default
     vmSize: Standard_D2_v2
