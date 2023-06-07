@@ -1,0 +1,14 @@
+apiVersion: containerservice.azure.gke.cloud.google.com/v1beta1
+kind: KubernetesClusterNodePool
+metadata:
+  annotations:
+    crossplane.io/external-name: aksnodepool # name of nodepool
+  name: aksnodepool # name of nodepool
+spec:
+  providerConfigRef: 
+    name: default-azure # change if different Azure providerconfig
+  forProvider:
+    kubernetesClusterIdRef:
+      name: aks-cluster #replace with name of aks cluster
+    nodeCount: 1
+    vmSize: Standard_DS2_v2
