@@ -2,7 +2,7 @@ apiVersion: container.gcp.gke.cloud.google.com/v1beta1
 kind: NodePool
 metadata:
   annotations:
-    meta.upbound.io/example-id: nodepool-2 # name of nodepool
+    crossplane.io/external-name: nodepool-2 # name of nodepool
   name: nodepool-2 # name of nodepool
 spec:
   providerConfigRef: 
