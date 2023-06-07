@@ -1,0 +1,24 @@
+apiVersion: containerservice.azure.gke.cloud.google.com/v1beta1
+kind: KubernetesCluster
+metadata:
+  annotations:
+    crossplane.io/external-name: aks-cluster # name of cluster
+  name: aks-cluster # name of cluster
+spec:
+  providerConfigRef: 
+    name: default-azure
+  forProvider:
+    defaultNodePool:
+      - name: default
+        nodeCount: 1
+        vmSize: Standard_D2_v2
+    dnsPrefix: akscluster
+    identity:
+      - type: SystemAssigned
+    location: "East Us" #replace with region 
+    resourceGroupName: abc # replace with resource group
+    kubernetesVersion: "1.25"
+    defaultNodePool:
+      - name: default
+        nodeCount: 1
+        vmSize: Standard_D2_v2
