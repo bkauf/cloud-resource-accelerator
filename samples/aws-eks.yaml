@@ -11,8 +11,6 @@ spec:
     region: us-east-1
     roleArn: arn:aws:iam::507aef # replace with cluster role ARN
     version: "1.25"
-    roleArnSelector:
-      matchControllerRef: true
     vpcConfig:
       - subnetIds:
         - subnet-0 #replace with cluster subnets
