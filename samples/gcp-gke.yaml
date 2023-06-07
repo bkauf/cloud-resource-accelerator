@@ -9,6 +9,6 @@ spec:
     name: default-gcp # replace with provider
   forProvider:
     initialNodeCount: 1
-    location: us-central1-a # add gcp region 
+    location: us-central1-c # add gcp region 
     minMasterVersion: "1.26"
    # removeDefaultNodePool: true
