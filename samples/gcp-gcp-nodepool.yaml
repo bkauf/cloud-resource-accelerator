@@ -1,0 +1,16 @@
+apiVersion: container.gcp.gke.cloud.google.com/v1beta1
+kind: NodePool
+metadata:
+  annotations:
+    meta.upbound.io/example-id: nodepool-2 # name of nodepool
+  name: nodepool-2 # name of nodepool
+spec:
+  providerConfigRef: 
+    name: default-gcp
+  forProvider:
+    cluster: cluster-1 # name of cluster to add node pool to
+    location: us-central1-c # location of the node pool 
+    nodeCount: 1
+    #version: 1.25
+    nodeConfig:
+      - machineType: e2-medium
