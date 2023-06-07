@@ -1,0 +1,23 @@
+# Demo of importing existing AKS cluster
+apiVersion: containerservice.azure.gke.cloud.google.com/v1beta1
+kind: KubernetesCluster
+metadata:
+  annotations:
+    crossplane.io/external-name: aks-cluster # name of cluster
+  name: aks-cluster # name of cluster
+spec:
+  managementPolicy: FullControl # ObserveOnly
+  providerConfigRef:
+    name: default-azure
+  writeConnectionSecretToRef:
+    name: import-aks-kubeconfig
+    namespace: default
+  forProvider:
+    defaultNodePool:
+    - name: default
+      vmSize: Standard_D2_v2
+    dnsPrefix: akscluster # adjust to DNS prefix of cluster
+    identity:
+    - type: SystemAssigned
+    location: "East Us" #adjust to location 
+    resourceGroupName: abc # replace with resource group
