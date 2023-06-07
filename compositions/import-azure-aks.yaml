@@ -1,0 +1,59 @@
+#Example of importing an AKS cluster into a composition 
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: import-azure-aks
+  labels:
+    crossplane.io/xrd: compositeclusters.demo.anthos.com
+spec:
+  compositeTypeRef:
+    apiVersion: demo.anthos.com/v1
+    kind:  CompositeCluster
+  patchSets:
+  - name: metadata
+    patches:
+    - fromFieldPath: metadata.labels
+  resources:
+  - name: cluster
+    base:
+      apiVersion: containerservice.azure.gke.cloud.google.com/v1beta1
+      kind: KubernetesCluster
+      metadata:
+        annotations:
+          crossplane.io/external-name: aks-cluster 
+      spec:
+        providerConfigRef: 
+          name: default-azure
+        forProvider:
+          defaultNodePool:
+            - name: default
+            #  nodeCount: 1
+              vmSize: Standard_B2s
+          dnsPrefix: akscluster
+          identity:
+           - type: SystemAssigned
+          #kubernetesVersion: 1.26
+          location: "East Us"
+          resourceGroupName: rg
+    patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.managementPolicy
+      toFieldPath: spec.managementPolicy
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.clusterName
+      toFieldPath: metadata.annotations[crossplane.io/external-name]
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.dnsPrefix
+      toFieldPath: spec.forProvider.dnsPrefix
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.defaultNodePoolName
+      toFieldPath: spec.forProvider.defaultNodePool[0].name
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.vmSize
+      toFieldPath: spec.forProvider.defaultNodePool[0].vmSize 
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.location
+      toFieldPath: spec.forProvider.location
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.resourceGroup
+      toFieldPath: spec.forProvider.resourceGroupName
