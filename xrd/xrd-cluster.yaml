@@ -63,6 +63,12 @@ spec:
                   #Azure Specific
                   resourceGroup:
                     type: string
+                  dnsPrefix:
+                    type: string
+                  vmSize:
+                    type: string
+                  defaultNodePoolName:
+                    type: string
                 type: object
           status:
             type: object
