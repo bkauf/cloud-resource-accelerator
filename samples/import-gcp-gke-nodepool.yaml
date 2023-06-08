@@ -1,0 +1,15 @@
+apiVersion: container.gcp.gke.cloud.google.com/v1beta1
+kind: NodePool
+metadata:
+  annotations:
+    crossplane.io/external-name: pool-2 #edit to match node pool name
+  name: gkenodepool #edit to match node pool name 
+spec:
+ # managementPolicy: ObserveOnly # FullControl is default 
+  providerConfigRef: 
+    name: default-gcp
+  forProvider:
+    cluster: cluster-1 # edit to match cluster name
+    location: us-central1-a #edit to match cluster location 
+    nodeLocations:
+      - us-central1-a #edit to match node pool location 
