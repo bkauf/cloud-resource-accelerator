@@ -38,20 +38,25 @@ spec:
               endpointPrivateAccesss: false
               endpointPublicAccess: true
     patches:
-    - type: ToCompositeFieldPath
-      fromFieldPath: status.atProvider.identity[0].oidc[0].issuer
-      toFieldPath: status.odicIssuerUrl
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.location
+      toFieldPath: spec.forProvider.nodeConfig[0].nodeLocations[0]
+    - fromFieldPath: spec.parameters.location
+      toFieldPath: spec.forProvider.region
+    - fromFieldPath: spec.parameters.clusterName
+      toFieldPath: metadata.annotations[crossplane.io/external-name]
+    - fromFieldPath: metadata.annotations[crossplane.io/external-name]
+      toFieldPath: status.clusterName
     - fromFieldPath: spec.parameters.k8sVersion
       toFieldPath: spec.forProvider.version
     - type: ToCompositeFieldPath
-      fromFieldPath: metadata.annotations[crossplane.io/external-name]
-      toFieldPath: status.clusterName
-    - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.status
       toFieldPath: status.controlPlaneStatus
-    - type: ToCompositeFieldPath
-      fromFieldPath: spec.forProvider.region
+    - fromFieldPath: status.atProvider.identity[0].oidc[0].issuer
+      toFieldPath: status.odicIssuerUrl
+    - fromFieldPath: spec.forProvider.region
       toFieldPath: status.region
+   
   #   readinessChecks:
   #   - type: MatchString
   #     fieldPath: status.atProvider.status
@@ -110,6 +115,9 @@ spec:
             matchLabels: 
               role: nodegroup
     patches:
+      - type: FromCompositeFieldPath
+        fromFieldPath: spec.parameters.location
+        toFieldPath: spec.forProvider.region
       - fromFieldPath: spec.parameters.nodeSize
         toFieldPath: spec.forProvider.instanceTypes[0]
         transforms:
@@ -263,8 +271,11 @@ spec:
           region: us-east-1
           cidrBlock: 10.0.0.0/16
           tags:
-            Name: sample-vpc
+            Name: example-vpc
     patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.location
+      toFieldPath: spec.forProvider.region
     - type: ToCompositeFieldPath
       fromFieldPath: metadata.annotations[crossplane.io/external-name]
       toFieldPath: status.vpcId
@@ -379,6 +390,8 @@ spec:
         labels:
           name: attachedclusterbootstrap
       spec:
+        providerConfigRef: 
+            name: default-gcp
         forProvider:
           clusterConfig:
             project: ""
@@ -396,10 +409,13 @@ spec:
       transforms:
       - type: map
         map:
-          1.24: 1.24.0-gke.1
-          1.25: 1.25.0-gke.2
+          1.24: 1.24.0-gke.4
+          1.25: 1.25.0-gke.4
+          1.26: 1.26.0-gke.2
     - fromFieldPath: status.clusterName
       toFieldPath: spec.forProvider.clusterConfig.id
+    - fromFieldPath: spec.parameters.anthosGCPRegion
+      toFieldPath: spec.forProvider.clusterConfig.location
     - fromFieldPath: spec.parameters.fleetProject
       toFieldPath: spec.forProvider.clusterConfig.project
     - fromFieldPath: metadata.uid
@@ -428,8 +444,9 @@ spec:
       transforms:
       - type: map
         map:
-          1.24: 1.24.0-gke.1
-          1.25: 1.25.0-gke.2
+          1.24: 1.24.0-gke.4
+          1.25: 1.25.0-gke.4
+          1.26: 1.26.0-gke.2
     - fromFieldPath: status.odicIssuerUrl
       toFieldPath: spec.forProvider.oidcConfig[0].issuerUrl
     - fromFieldPath: spec.parameters.fleetProject
@@ -440,5 +457,7 @@ spec:
             fmt: "projects/%s"
     - fromFieldPath: spec.parameters.adminUsers
       toFieldPath: spec.forProvider.authorization[0].adminUsers
+    - fromFieldPath: spec.parameters.anthosGCPRegion
+      toFieldPath: spec.forProvider.location
     - fromFieldPath: status.clusterName
       toFieldPath: metadata.annotations[crossplane.io/external-name]
