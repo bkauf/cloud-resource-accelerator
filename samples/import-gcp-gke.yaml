@@ -1,4 +1,3 @@
-#sample file to import a GKE on GCP cluster
 apiVersion: container.gcp.gke.cloud.google.com/v1beta1
 kind: Cluster
 metadata:
@@ -6,6 +5,7 @@ metadata:
   annotations:
     crossplane.io/external-name: cluster-1 # edit to match cluster name
 spec:
+  #managementPolicy: ObserveOnly # used to gather all resource fields
   providerConfigRef: 
     name: default-gcp # edit to match GCP providerconfig
   forProvider:
