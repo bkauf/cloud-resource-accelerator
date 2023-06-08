@@ -47,6 +47,8 @@ spec:
                     type: string
                   location:
                     type: string
+                  anthosGCPRegion:
+                    type: string
                   clusterName: 
                     type: string
                   #AWS Sepecific 
