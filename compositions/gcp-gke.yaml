@@ -46,9 +46,6 @@ spec:
       fromFieldPath: status.atProvider.masterVersion
       toFieldPath: status.version  
     - type: ToCompositeFieldPath
-      fromFieldPath: status.atProvider.status
-      toFieldPath: status.controlPlaneStatus
-    - type: ToCompositeFieldPath
       fromFieldPath: spec.forProvider.location
       toFieldPath: status.region
 
@@ -65,21 +62,19 @@ spec:
         forProvider:
           clusterSelector:
             matchControllerRef: true
-          location: us-central1-a
+          # location: us-central1-a
           nodeConfig:
             - machineType: e2-medium
               oauthScopes:
                 - https://www.googleapis.com/auth/cloud-platform
-              nodeLocations: 
-                - us-central1-a
+             # nodeLocations: 
+              #  - us-central1-a
     patches:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.parameters.minNodeCount
       toFieldPath: spec.forProvider.nodeCount
     - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.location
-      toFieldPath: spec.forProvider.nodeConfig[0].nodeLocations[0]
-    - fromFieldPath: spec.parameters.nodeSize
+      fromFieldPath: spec.parameters.nodeSize
       toFieldPath: spec.forProvider.nodeConfig[0].machineType
       transforms:
         - type: map
@@ -87,6 +82,3 @@ spec:
             small: e2-small
             medium: e2-medium
             large: e2-standard-2
-    - type: ToCompositeFieldPath
-      fromFieldPath: status.atProvider.status
-      toFieldPath: status.nodePoolStatus
