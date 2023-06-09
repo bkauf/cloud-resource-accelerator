@@ -1,4 +1,5 @@
 #example of making an Attached EKS on AWS cluster
+#note region us-east-1 is hard coded in the cluster, auth, nodepools, and vpc/subnets
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
@@ -41,21 +42,25 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.parameters.location
       toFieldPath: spec.forProvider.nodeConfig[0].nodeLocations[0]
-    - fromFieldPath: spec.parameters.location
-      toFieldPath: spec.forProvider.region
     - fromFieldPath: spec.parameters.clusterName
       toFieldPath: metadata.annotations[crossplane.io/external-name]
-    - fromFieldPath: metadata.annotations[crossplane.io/external-name]
-      toFieldPath: status.clusterName
     - fromFieldPath: spec.parameters.k8sVersion
       toFieldPath: spec.forProvider.version
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.status
       toFieldPath: status.controlPlaneStatus
-    - fromFieldPath: status.atProvider.identity[0].oidc[0].issuer
+    - type: ToCompositeFieldPath
+      fromFieldPath: status.atProvider.identity[0].oidc[0].issuer
       toFieldPath: status.odicIssuerUrl
-    - fromFieldPath: spec.forProvider.region
+    - type: ToCompositeFieldPath
+      fromFieldPath: spec.forProvider.region
       toFieldPath: status.region
+    - type: ToCompositeFieldPath
+      fromFieldPath: spec.forProvider.region
+      toFieldPath: status.region
+    - type: ToCompositeFieldPath
+    - fromFieldPath: metadata.annotations[crossplane.io/external-name]
+      toFieldPath: status.clusterName
    
   #   readinessChecks:
   #   - type: MatchString
@@ -74,6 +79,7 @@ spec:
         providerConfigRef: 
           name: default-aws
         forProvider:
+          region: us-east-1
           clusterNameSelector:
             matchControllerRef: true
         writeConnectionSecretToRef:
@@ -86,8 +92,6 @@ spec:
         - type: string
           string:
             fmt: "%s-ekscluster"
-    - fromFieldPath: status.region
-      toFieldPath: spec.forProvider.region
   - name: eksnodegroup
     base:
       apiVersion: eks.aws.gke.cloud.google.com/v1beta1
@@ -116,9 +120,7 @@ spec:
               role: nodegroup
     patches:
       - type: FromCompositeFieldPath
-        fromFieldPath: spec.parameters.location
-        toFieldPath: spec.forProvider.region
-      - fromFieldPath: spec.parameters.nodeSize
+        fromFieldPath: spec.parameters.nodeSize
         toFieldPath: spec.forProvider.instanceTypes[0]
         transforms:
         - type: map
@@ -273,9 +275,6 @@ spec:
           tags:
             Name: example-vpc
     patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.location
-      toFieldPath: spec.forProvider.region
     - type: ToCompositeFieldPath
       fromFieldPath: metadata.annotations[crossplane.io/external-name]
       toFieldPath: status.vpcId
@@ -412,7 +411,7 @@ spec:
           1.24: 1.24.0-gke.4
           1.25: 1.25.0-gke.4
           1.26: 1.26.0-gke.2
-    - fromFieldPath: status.clusterName
+    - fromFieldPath: spec.parameters.clusterName
       toFieldPath: spec.forProvider.clusterConfig.id
     - fromFieldPath: spec.parameters.anthosGCPRegion
       toFieldPath: spec.forProvider.clusterConfig.location
@@ -459,5 +458,5 @@ spec:
       toFieldPath: spec.forProvider.authorization[0].adminUsers
     - fromFieldPath: spec.parameters.anthosGCPRegion
       toFieldPath: spec.forProvider.location
-    - fromFieldPath: status.clusterName
+    - fromFieldPath: spec.parameters.clusterName
       toFieldPath: metadata.annotations[crossplane.io/external-name]
