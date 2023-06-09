@@ -59,8 +59,13 @@ spec:
       fromFieldPath: spec.forProvider.region
       toFieldPath: status.region
     - type: ToCompositeFieldPath
-    - fromFieldPath: metadata.annotations[crossplane.io/external-name]
+      fromFieldPath: metadata.annotations[crossplane.io/external-name]
       toFieldPath: status.clusterName
+
+
+
+
+
    
   #   readinessChecks:
   #   - type: MatchString
