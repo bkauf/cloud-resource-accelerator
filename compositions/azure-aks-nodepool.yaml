@@ -21,8 +21,8 @@ spec:
       apiVersion: containerservice.azure.gke.cloud.google.com/v1beta1
       kind: KubernetesClusterNodePool
       spec:
-        providerConfigRef:
-          name: default-azure
+#         providerConfigRef:
+#           name: default-azure
         forProvider:
           kubernetesClusterIdRef: 
             name: aks-cluster
