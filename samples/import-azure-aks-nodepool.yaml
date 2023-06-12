@@ -6,8 +6,8 @@ metadata:
   name: aksnodepool #edit to match node pool name 
 spec:
   managementPolicy: FullControl # ObserveOnly
-  providerConfigRef:
-    name: default-azure
+#   providerConfigRef:
+#     name: default-azure
   forProvider:
     kubernetesClusterIdRef:
       name: aks-cluster
