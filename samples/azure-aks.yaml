@@ -5,8 +5,8 @@ metadata:
     crossplane.io/external-name: aks-cluster # name of cluster
   name: aks-cluster # name of cluster
 spec:
-  providerConfigRef: 
-    name: default-azure
+#   providerConfigRef: 
+#     name: default-azure
   forProvider:
     defaultNodePool:
       - name: default
