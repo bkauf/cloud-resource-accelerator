@@ -7,8 +7,8 @@ metadata:
   name: aks-cluster # name of cluster
 spec:
   managementPolicy: FullControl # ObserveOnly
-  providerConfigRef:
-    name: default-azure
+#   providerConfigRef:
+#     name: default-azure
   writeConnectionSecretToRef:
     name: import-aks-kubeconfig
     namespace: default
