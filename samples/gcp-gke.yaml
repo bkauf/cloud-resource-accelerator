@@ -5,8 +5,8 @@ metadata:
     meta.upbound.io/example-id: cluster-1 # name of gke cluster
   name: cluster-1 # name of gke cluster
 spec:
-  providerConfigRef: 
-    name: default-gcp # replace with provider
+#   providerConfigRef: 
+#     name: default-gcp # replace with provider
   forProvider:
     initialNodeCount: 1
     location: us-central1-c # add gcp region 
