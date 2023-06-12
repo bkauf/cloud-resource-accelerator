@@ -26,8 +26,8 @@ spec:
         labels:
          role: controlplane
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           region: us-east-1
           version: 1.24
@@ -75,8 +75,8 @@ spec:
         labels:
          role: controlplane
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           region: us-east-1
           clusterNameSelector:
@@ -98,8 +98,8 @@ spec:
       metadata:
         name: eks-ng
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           clusterNameSelector:
             matchControllerRef: true
@@ -144,8 +144,8 @@ spec:
           role: controlplane
         name: controlplane
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           assumeRolePolicy: |
             {
@@ -173,8 +173,8 @@ spec:
       metadata:
         name: cluster-policy1
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
           roleSelector:
@@ -218,8 +218,8 @@ spec:
       metadata:
         name: node-policy1
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           policyArn: arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
           roleSelector:
@@ -233,8 +233,8 @@ spec:
       metadata:
         name: node-policy2
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
           roleSelector:
@@ -263,8 +263,8 @@ spec:
       metadata:
         name: sample-vpc
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           region: us-east-1
           cidrBlock: 10.0.0.0/16
@@ -285,8 +285,8 @@ spec:
           access: public
           role: nodegroup
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           region: us-east-1
           availabilityZone: us-east-1a
@@ -307,8 +307,8 @@ spec:
           access: public
           role: nodegroup
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           region: us-east-1
           availabilityZone: us-east-1b
@@ -329,8 +329,8 @@ spec:
           access: public
           role: nodegroup
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           region: us-east-1
           availabilityZone: us-east-1c
@@ -349,8 +349,8 @@ spec:
         labels:
           name: routegw
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           region: us-east-1
           vpcIdSelector:
@@ -366,8 +366,8 @@ spec:
         labels:
           name: defaultRouteTable
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           defaultRouteTableIdSelector:
             matchControllerRef: true
@@ -385,8 +385,8 @@ spec:
         labels:
           name: attachedclusterbootstrap
       spec:
-        providerConfigRef: 
-            name: default-gcp
+#         providerConfigRef: 
+#             name: default-gcp
         forProvider:
           clusterConfig:
             project: ""
@@ -426,8 +426,8 @@ spec:
       metadata:
         name: attachedcluster
       spec:
-        providerConfigRef: 
-            name: default-gcp
+#         providerConfigRef: 
+#             name: default-gcp
         forProvider:
           distribution: eks
           location: us-east4
