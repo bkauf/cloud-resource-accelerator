@@ -5,8 +5,8 @@ metadata:
     crossplane.io/external-name: aksnodepool # name of nodepool
   name: aksnodepool # name of nodepool
 spec:
-  providerConfigRef: 
-    name: default-azure # change if different Azure providerconfig
+#   providerConfigRef: 
+#     name: default-azure # change if different Azure providerconfig
   forProvider:
     kubernetesClusterIdRef:
       name: aks-cluster #replace with name of aks cluster
