@@ -22,8 +22,8 @@ spec:
       kind: Cluster
       metadata:  
       spec:
-        providerConfigRef: 
-          name: default-gcp
+#         providerConfigRef: 
+#           name: default-gcp
         forProvider:
           initialNodeCount: 1
           location: us-central1-a
@@ -57,8 +57,8 @@ spec:
       metadata:
         annotations:
       spec:
-        providerConfigRef: 
-          name: default-gcp
+#         providerConfigRef: 
+#           name: default-gcp
         forProvider:
           clusterSelector:
             matchControllerRef: true
