@@ -4,7 +4,7 @@ set -euo pipefail
 set -x
 
 # These params can be changed by the user
-KRM_CLUSTER_NAME=testcluster
+KRM_CLUSTER_NAME=krmapihost-resource-accelerator
 KRM_CLUSTER_LOCATION=us-central1
 KRM_CLUSTER_PROJECT_ID=$(gcloud config get-value project)
 AWS_ROLE_NAME=cloud-resource-accelerator-role

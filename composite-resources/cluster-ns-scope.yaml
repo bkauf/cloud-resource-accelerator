@@ -6,7 +6,7 @@ metadata:
     cluster-owner: abc
 spec:
   compositionRef:
-    name: cluster-gcp-gke  # Possible values cluster-gcp-gke, cluster-aws-eks, cluster-azure-aks
+    name: cluster-aws-eks  # Possible values cluster-gcp-gke, cluster-aws-eks, cluster-azure-aks
   parameters:
     location: "us-central1-c" # for AKS EKS us-east-1 is hard coded in the composition aws.eks.yaml
     clusterName: "cluster-1"

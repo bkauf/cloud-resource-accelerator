@@ -190,8 +190,8 @@ spec:
           role: nodegroup
         name: nodegroup 
       spec:
-        providerConfigRef: 
-          name: default-aws
+        # providerConfigRef: 
+        #   name: default-aws
         forProvider:
           assumeRolePolicy: |
             {
@@ -248,8 +248,8 @@ spec:
       metadata:
         name: node-policy2 
       spec:
-        providerConfigRef: 
-          name: default-aws
+        # providerConfigRef: 
+        #   name: default-aws
         forProvider:
           policyArn: arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
           roleSelector:
