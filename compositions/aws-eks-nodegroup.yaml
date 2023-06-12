@@ -23,8 +23,8 @@ spec:
       metadata:
         name: eks-ng
       spec:
-        providerConfigRef: 
-          name: default-aws
+#         providerConfigRef: 
+#           name: default-aws
         forProvider:
           region: us-east-1
           scalingConfig:
