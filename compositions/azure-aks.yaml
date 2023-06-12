@@ -25,8 +25,8 @@ spec:
           role: controlplane
        # name: akscluster
       spec:
-        providerConfigRef: 
-          name: default-azure
+#         providerConfigRef: 
+#           name: default-azure
         forProvider:
           defaultNodePool:
             - name: default
