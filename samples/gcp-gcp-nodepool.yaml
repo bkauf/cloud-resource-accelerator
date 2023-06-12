@@ -5,8 +5,8 @@ metadata:
     crossplane.io/external-name: nodepool-2 # name of nodepool
   name: nodepool-2 # name of nodepool
 spec:
-  providerConfigRef: 
-    name: default-gcp
+#   providerConfigRef: 
+#     name: default-gcp
   forProvider:
     cluster: cluster-1 # name of cluster to add node pool to
     location: us-central1-c # location of the node pool 
