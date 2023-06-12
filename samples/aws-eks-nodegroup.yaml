@@ -5,8 +5,8 @@ metadata:
     crossplane.io/external-name: eks-nodegroup # name of nodegroup
   name: eks-nodegroup # name of nodegroup
 spec:
-  providerConfigRef: 
-    name: default-aws
+#   providerConfigRef: 
+#     name: default-aws
   forProvider:
     clusterName: eks-cluster
     nodeRoleArn: arn:aws:iam::50709938 # replace with node role ARN
