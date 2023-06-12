@@ -5,8 +5,8 @@ metadata:
     crossplane.io/external-name: eks-cluster # name of cluster
   name: eks-cluster # name of cluster
 spec:
-  providerConfigRef: 
-    name: default-aws # replace with AWS provider config
+#   providerConfigRef: 
+#     name: default-aws # replace with AWS provider config
   forProvider:
     region: us-east-1
     roleArn: arn:aws:iam::507aef # replace with cluster role ARN
