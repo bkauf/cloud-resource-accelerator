@@ -23,7 +23,7 @@ spec:
       metadata:  
       spec:
 #         providerConfigRef: 
-#           name: default-gcp
+#           name: default-gcp # edit to match provider config if not default
         forProvider:
           initialNodeCount: 1
           location: us-central1-a
@@ -58,7 +58,7 @@ spec:
         annotations:
       spec:
 #         providerConfigRef: 
-#           name: default-gcp
+#           name: default-gcp # edit to match provider config if not default
         forProvider:
           clusterSelector:
             matchControllerRef: true
