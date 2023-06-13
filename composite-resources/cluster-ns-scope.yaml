@@ -1,7 +1,7 @@
 apiVersion: demo.anthos.com/v1
 kind: Cluster
 metadata:
-  name: cluster-1
+  name: cluster-2
   labels:
     cluster-owner: abc
 spec:
@@ -9,7 +9,7 @@ spec:
     name: cluster-gcp-gke  # Possible values cluster-gcp-gke, cluster-aws-eks, cluster-azure-aks
   parameters:
     location: "us-central1-c" # for AKS EKS us-east-1 is hard coded in the composition aws.eks.yaml
-    clusterName: "cluster-1"
+    clusterName: "cluster-2"
     nodeSize: medium  # Possible values small, medium, large
     minNodeCount: 2
     k8sVersion: "1.24"
