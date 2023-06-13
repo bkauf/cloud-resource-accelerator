@@ -6,7 +6,7 @@ metadata:
   name: cluster-1 # name of gke cluster
 spec:
 #   providerConfigRef: 
-#     name: default-gcp # replace with provider
+#     name: default-gcp  # edit to match provider config if not default
   forProvider:
     initialNodeCount: 1
     location: us-central1-c # add gcp region 
