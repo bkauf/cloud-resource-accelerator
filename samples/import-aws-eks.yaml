@@ -7,8 +7,6 @@ metadata:
     crossplane.io/external-name: eks-cluster # edit to match cluster name
 spec:
   #managementPolicy: ObserveOnly
-#   providerConfigRef: 
-#     name: default-aws #edit to mach providerConfig
   forProvider:
     region: us-east-2  # edit to match cluster region
     roleArn: arn:aws:iam: #edit to match arn 

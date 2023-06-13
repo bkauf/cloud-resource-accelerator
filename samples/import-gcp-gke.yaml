@@ -6,7 +6,5 @@ metadata:
     crossplane.io/external-name: cluster-1 # edit to match cluster name
 spec:
   #managementPolicy: ObserveOnly # used to gather all resource fields
-#   providerConfigRef: 
-#     name: default-gcp # edit to match GCP providerconfig if not default
   forProvider:
     location: us-central1-c # edit to match location

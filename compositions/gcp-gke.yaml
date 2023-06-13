@@ -22,8 +22,6 @@ spec:
       kind: Cluster
       metadata:  
       spec:
-#         providerConfigRef: 
-#           name: default-gcp # edit to match provider config if not default
         forProvider:
           initialNodeCount: 1
           location: us-central1-a
@@ -48,8 +46,6 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: spec.forProvider.location
       toFieldPath: status.region
-
-
   - name: nodepool
     base:
       apiVersion: container.gcp.gke.cloud.google.com/v1beta1
@@ -57,8 +53,6 @@ spec:
       metadata:
         annotations:
       spec:
-#         providerConfigRef: 
-#           name: default-gcp # edit to match provider config if not default
         forProvider:
           clusterSelector:
             matchControllerRef: true
