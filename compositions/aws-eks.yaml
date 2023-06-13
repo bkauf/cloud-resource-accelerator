@@ -27,7 +27,7 @@ spec:
          role: controlplane
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           region: us-east-1
           version: 1.24
@@ -76,7 +76,7 @@ spec:
          role: controlplane
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           region: us-east-1
           clusterNameSelector:
@@ -99,7 +99,7 @@ spec:
         name: eks-ng
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           clusterNameSelector:
             matchControllerRef: true
@@ -145,7 +145,7 @@ spec:
         name: controlplane
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           assumeRolePolicy: |
             {
@@ -191,7 +191,7 @@ spec:
         name: nodegroup 
       spec:
         # providerConfigRef: 
-        #   name: default-aws
+        #   name: default-aws # edit to match provider config if not default
         forProvider:
           assumeRolePolicy: |
             {
@@ -219,7 +219,7 @@ spec:
         name: node-policy1
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           policyArn: arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
           roleSelector:
@@ -233,8 +233,8 @@ spec:
       metadata:
         name: node-policy2
       spec:
-#         providerConfigRef: 
-#           name: default-aws
+#         providerConfigRef:  
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
           roleSelector:
@@ -249,7 +249,7 @@ spec:
         name: node-policy2 
       spec:
         # providerConfigRef: 
-        #   name: default-aws
+        #   name: default-aws # edit to match provider config if not default
         forProvider:
           policyArn: arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
           roleSelector:
@@ -264,7 +264,7 @@ spec:
         name: sample-vpc
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           region: us-east-1
           cidrBlock: 10.0.0.0/16
@@ -286,7 +286,7 @@ spec:
           role: nodegroup
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           region: us-east-1
           availabilityZone: us-east-1a
@@ -308,7 +308,7 @@ spec:
           role: nodegroup
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           region: us-east-1
           availabilityZone: us-east-1b
@@ -330,7 +330,7 @@ spec:
           role: nodegroup
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           region: us-east-1
           availabilityZone: us-east-1c
@@ -350,7 +350,7 @@ spec:
           name: routegw
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           region: us-east-1
           vpcIdSelector:
@@ -367,7 +367,7 @@ spec:
           name: defaultRouteTable
       spec:
 #         providerConfigRef: 
-#           name: default-aws
+#           name: default-aws # edit to match provider config if not default
         forProvider:
           defaultRouteTableIdSelector:
             matchControllerRef: true
@@ -386,7 +386,7 @@ spec:
           name: attachedclusterbootstrap
       spec:
 #         providerConfigRef: 
-#             name: default-gcp
+#             name: default-gcp # edit to match provider config if not default
         forProvider:
           clusterConfig:
             project: ""
@@ -427,7 +427,7 @@ spec:
         name: attachedcluster
       spec:
 #         providerConfigRef: 
-#             name: default-gcp
+#             name: default-gcp # edit to match provider config if not default
         forProvider:
           distribution: eks
           location: us-east4
