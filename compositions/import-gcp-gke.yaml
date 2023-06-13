@@ -24,8 +24,8 @@ spec:
         annotations:
           crossplane.io/external-name: gkehub/v1beta1/membership
       spec:
-        providerConfigRef: 
-          name: default-gcp
+#         providerConfigRef: 
+#           name: default-gcp # edit to match provider config if not default
         forProvider:
           location: us-central1-c
         #  minMasterVersion: 1.26.2-gke.1000 # edit to match desired version to demo upgrading all clusters with this composition 
