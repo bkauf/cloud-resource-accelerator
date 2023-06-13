@@ -6,7 +6,7 @@ metadata:
   name: nodepool-2 # name of nodepool
 spec:
 #   providerConfigRef: 
-#     name: default-gcp
+#     name: default-gcp # edit to match provider config if not default
   forProvider:
     cluster: cluster-1 # name of cluster to add node pool to
     location: us-central1-c # location of the node pool 
