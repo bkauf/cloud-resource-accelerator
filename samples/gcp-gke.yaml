@@ -2,7 +2,6 @@ apiVersion: container.gcp.gke.cloud.google.com/v1beta1
 kind: Cluster
 metadata:
   annotations:
-    meta.upbound.io/example-id: cluster-1 # name of gke cluster
   name: cluster-1 # name of gke cluster
 spec:
   forProvider:
