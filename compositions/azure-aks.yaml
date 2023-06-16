@@ -89,16 +89,17 @@ spec:
         labels:
           name: attachedclusterbootstrap
       spec:
-        clusterConfig:
-          project: ""
-          id: ""
-          location: us-east4
-          platformVersion: ""
-        clusterCredentials:
-          source: Secret
-          secretRef:
-            namespace: default
-            key: kubeconfig
+        forProvider:
+          clusterConfig:
+            project: ""
+            id: ""
+            location: us-east4
+            platformVersion: ""
+          clusterCredentials:
+            source: Secret
+            secretRef:
+              namespace: default
+              key: kubeconfig
     patches:
     - fromFieldPath: spec.parameters.k8sVersion
       toFieldPath: spec.forProvider.clusterConfig.platformVersion
