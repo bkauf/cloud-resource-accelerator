@@ -2,13 +2,13 @@
 apiVersion: configsync.gke.io/v1beta1
 kind: RootSync
 metadata:
-  name: crossplane
+  name: resource-accelerator
   namespace: config-management-system
 spec:
   sourceType: git
-  sourceFormat: hierarchy
+  sourceFormat: unstructured
   git:
-    repo: https://github.com/bkauf/anthos-crossplane-demo
+    repo: https://github.com/bkauf/cloud-resource-accelerator
     auth: none
-    dir: crossplane-acm
-    branch: master
+    dir: config-sync/root
+    branch: main
