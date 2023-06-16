@@ -3,7 +3,7 @@ apiVersion: container.gcp.gke.cloud.google.com/v1beta1
 kind: Cluster
 metadata:
   annotations:
-  name: gkc-from-config-sync # name of gke cluster
+  name: gke-from-config-sync # name of gke cluster
 spec:
   forProvider:
     initialNodeCount: 1
