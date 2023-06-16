@@ -8,4 +8,4 @@ spec:
   forProvider:
     initialNodeCount: 1
     location: us-central1
-    minMasterVersion: "1.26"
+    minMasterVersion: "1.25"
