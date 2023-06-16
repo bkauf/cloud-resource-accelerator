@@ -71,9 +71,6 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.oidcIssuerUrl
       toFieldPath: status.odicIssuerUrl
-    - type: ToCompositeFieldPath
-      fromFieldPath: status.conditions.status
-      toFieldPath: status.controlPlaneStatus
     - fromFieldPath: metadata.uid
       toFieldPath: spec.writeConnectionSecretToRef.name
       transforms:
