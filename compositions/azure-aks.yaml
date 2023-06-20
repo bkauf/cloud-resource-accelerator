@@ -118,9 +118,6 @@ spec:
         - type: string
           string:
             fmt: "%s-akscluster"
-    readinessChecks:
-    - type: NonEmpty
-      fieldPath: status.succeeded
   - name: attachedCluster
     base:
       apiVersion: containerattached.gcp.gke.cloud.google.com/v1beta1
