@@ -22,6 +22,8 @@ spec:
         annotations:
           crossplane.io/external-name: aks-cluster 
       spec:
+        writeConnectionSecretToRef:
+          namespace: default
         forProvider:
           defaultNodePool:
             - name: default
@@ -29,7 +31,8 @@ spec:
               vmSize: Standard_B2s
           dnsPrefix: akscluster
           identity:
-           - type: SystemAssigned
+            - type: SystemAssigned
+           # - type: UserAssigned
           #kubernetesVersion: 1.26
           location: "East Us"
           resourceGroupName: rg
@@ -55,3 +58,96 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.parameters.resourceGroup
       toFieldPath: spec.forProvider.resourceGroupName
+    - type: ToCompositeFieldPath
+      fromFieldPath: metadata.annotations[crossplane.io/external-name]
+      toFieldPath: status.clusterName
+    - type: ToCompositeFieldPath
+      fromFieldPath: spec.forProvider.location
+      toFieldPath: status.region
+    - type: ToCompositeFieldPath
+      fromFieldPath: status.atProvider.oidcIssuerUrl
+      toFieldPath: status.odicIssuerUrl
+    - fromFieldPath: metadata.uid
+      toFieldPath: spec.writeConnectionSecretToRef.name
+      transforms:
+      - type: string
+        string:
+          fmt: "%s-akscluster"
+
+  - name: clusterbootstrap
+    base:
+      apiVersion: containerattached.gcp.gke.cloud.google.com/v1beta1
+      kind: ClusterBootstrapJob
+      metadata:
+        name: installmanifest
+        labels:
+          name: attachedclusterbootstrap
+      spec:
+        forProvider:
+          clusterConfig:
+            project: ""
+            id: ""
+            location: us-east4
+            platformVersion: "aks"
+          clusterCredentials:
+            source: Secret
+            secretRef:
+              namespace: default
+              key: kubeconfig
+    patches:
+    - fromFieldPath: spec.parameters.k8sVersion
+      toFieldPath: spec.forProvider.clusterConfig.platformVersion
+      transforms:
+      - type: map
+        map:
+          1.24: 1.24.0-gke.4
+          1.25: 1.25.0-gke.4
+          1.26: 1.26.0-gke.2
+    - fromFieldPath: spec.parameters.clusterName
+      toFieldPath: spec.forProvider.clusterConfig.id
+    - fromFieldPath: spec.parameters.anthosGCPRegion
+      toFieldPath: spec.forProvider.clusterConfig.location
+    - fromFieldPath: spec.parameters.fleetProject
+      toFieldPath: spec.forProvider.clusterConfig.project
+    - fromFieldPath: metadata.uid
+      toFieldPath: spec.forProvider.clusterCredentials.secretRef.name
+      transforms:
+        - type: string
+          string:
+            fmt: "%s-akscluster"
+
+  - name: attachedCluster
+    base:
+      apiVersion: containerattached.gcp.gke.cloud.google.com/v1beta1
+      kind: Cluster
+      metadata:
+        name: attachedcluster
+      spec:
+        forProvider:
+          distribution: "aks"
+          location: us-east4
+          fleet:
+          - project: "project/<project-number>"
+    patches:
+    - fromFieldPath: spec.parameters.k8sVersion
+      toFieldPath: spec.forProvider.platformVersion
+      transforms:
+      - type: map
+        map:
+          1.24: 1.24.0-gke.4
+          1.25: 1.25.0-gke.4
+          1.26: 1.26.0-gke.2
+    - fromFieldPath: status.odicIssuerUrl
+      toFieldPath: spec.forProvider.oidcConfig[0].issuerUrl
+    - fromFieldPath: spec.parameters.anthosGCPRegion
+      toFieldPath: spec.forProvider.location
+    - fromFieldPath: spec.parameters.fleetProject
+      toFieldPath: spec.forProvider.fleet[0].project
+      transforms:
+      - type: string
+        string:
+          fmt: "projects/%s"
+    - fromFieldPath: spec.parameters.adminUsers
+      toFieldPath: spec.forProvider.authorization[0].adminUsers
+    - fromFieldPath: status.clusterName
+      toFieldPath: metadata.annotations[crossplane.io/external-name]
