@@ -10,7 +10,15 @@ spec:
    # managementPolicy: ObserveOnly #toggle to remove management
     clusterName: cluster-1 # name of the cluster in given cloud
     location: "us-central1-c"	# location of the cluster in given cloud
-    #AWS EKS specifics below, leave blank if not using EKS
+    fleetProject: "261832825633" #GCP project number of fleet
+    k8sVersion: "1.25" #used for attached cluster version
+    # Available GCP Regions for attached cluster API 
+    #https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/eks/reference/supported-regions
+    #Attached Cluster Pre-reqs https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/eks/reference/cluster-prerequisites
+    anthosGCPRegion: us-east4 #us-east4 or us-west1
+    adminUsers:
+    - bkauf@google.com
+    #AWS EKS specifics, leave blank or remove if not using EKS
     securityGroupIds:
     - sg-0fd # security group of EKS cluster
     roleArn: arn:aws:iam # used for importing EKS
@@ -18,7 +26,7 @@ spec:
     - subnet-0
     - subnet-1 
     - subnet-2
-    #Azure specifics below, leave blank if not using AKS
+    #Azure specifics below, leave blank or remove if not using AKS
     resourceGroup: abc
     dnsPrefix: akscluster
     defaultNodePoolName: default
