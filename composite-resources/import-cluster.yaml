@@ -10,14 +10,14 @@ spec:
    # managementPolicy: ObserveOnly #toggle to remove management
     clusterName: cluster-1 # name of the cluster in given cloud
     location: "us-central1-c"	# location of the cluster in given cloud
-    fleetProject: "261832825633" #GCP project number of fleet
+    fleetProject: "11111" #GCP project number of fleet, replace with your won
     k8sVersion: "1.25" #used for attached cluster version selection
     # Available GCP Regions for attached cluster API 
     #https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/eks/reference/supported-regions
     #Attached Cluster Pre-reqs https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/eks/reference/cluster-prerequisites
     anthosGCPRegion: us-east4 #us-east4 or us-west1
     adminUsers:
-    - bkauf@google.com
+    - example@google.com
     #AWS EKS specifics, leave blank or remove if not using EKS
     securityGroupIds:
     - sg-0fd # security group of EKS cluster
