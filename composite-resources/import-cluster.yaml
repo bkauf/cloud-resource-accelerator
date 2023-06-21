@@ -11,7 +11,7 @@ spec:
     clusterName: cluster-1 # name of the cluster in given cloud
     location: "us-central1-c"	# location of the cluster in given cloud
     fleetProject: "261832825633" #GCP project number of fleet
-    k8sVersion: "1.25" #used for attached cluster version
+    k8sVersion: "1.25" #used for attached cluster version selection
     # Available GCP Regions for attached cluster API 
     #https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/eks/reference/supported-regions
     #Attached Cluster Pre-reqs https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/eks/reference/cluster-prerequisites
