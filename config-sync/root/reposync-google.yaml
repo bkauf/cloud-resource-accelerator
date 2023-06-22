@@ -18,7 +18,7 @@ metadata:
   # There can be at most one RepoSync object per namespace.
   # To enforce this restriction, the object name must be repo-sync. 
   name: repo-sync
-  namespace: google
+  namespace: google #replace with your namespace
 spec:
   # Since this is for a namespace repository, the format should be unstructured
   sourceFormat: unstructured
