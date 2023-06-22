@@ -12,6 +12,7 @@ spec:
   claimNames: # this is what namespace scoped XRCs are called
     kind: Cluster
     plural: clusters
+  
   versions:
   - name: v1
     served: true
@@ -99,9 +100,9 @@ spec:
     - name: clusterName
       type: string
       jsonPath: ".status.clusterName"
-    - name: controlPlane
+    - name: version
       type: string
-      jsonPath: ".status.controlPlaneStatus"
+      jsonPath: ".status.version"
     - name: nodePool
       type: string
       jsonPath: ".status.nodePoolStatus"
