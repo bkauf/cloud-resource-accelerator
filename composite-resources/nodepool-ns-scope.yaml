@@ -8,7 +8,7 @@ spec:
     name: gcp-gke-nodepool # Possible values: gcp-gke-nodepool, aws-eks-nodegroup, azure-aks-nodepool
   parameters:
     # managementPolicy: ObserveOnly
-    clusterName: "cluster-2"
+    clusterName: "cluster-2" # for Azure node pools use the clusterID(refer to docs for how to get this)
     nodePoolName: "pool2" # name of the nodepool
     location: "us-central1-c"	
     nodeSize: medium  # Possible values small, medium, large
