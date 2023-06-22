@@ -53,10 +53,9 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: metadata.annotations[crossplane.io/external-name]
       toFieldPath: status.clusterName
-  #   readinessChecks:
-  #   - type: MatchString
-  #     fieldPath: status.atProvider.status
-  #     matchString: ACTIVE
+    - type: ToCompositeFieldPath
+      fromFieldPath: status.atProvider.version
+      toFieldPath: status.version
 
   - name: clusterauth
     base:
@@ -81,6 +80,10 @@ spec:
         - type: string
           string:
             fmt: "%s-ekscluster"
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.parameters.clusterName
+      toFieldPath: metadata.annotations[crossplane.io/external-name]
+    
   - name: eksnodegroup
     base:
       apiVersion: eks.aws.gke.cloud.google.com/v1beta1
