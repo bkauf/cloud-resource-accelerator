@@ -22,8 +22,6 @@ spec:
       kind: KubernetesClusterNodePool
       spec:
         forProvider:
-          kubernetesClusterIdRef: 
-            name: aks-cluster
           vmSize: Standard_DS2_v2
     patches:
     - type: FromCompositeFieldPath
@@ -31,7 +29,7 @@ spec:
       toFieldPath: metadata.annotations[crossplane.io/external-name]
     - type: FromCompositeFieldPath
       fromFieldPath: spec.parameters.clusterName
-      toFieldPath: spec.forProvider.kubernetesClusterIdRef.name
+      toFieldPath: spec.forProvider.kubernetesClusterId
     - type: FromCompositeFieldPath
       fromFieldPath: spec.parameters.minNodeCount
       toFieldPath: spec.forProvider.nodeCount
