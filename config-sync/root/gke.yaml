@@ -1,11 +1,11 @@
 #sample GKE on GCP cluster
-apiVersion: container.gcp.gke.cloud.google.com/v1beta1
-kind: Cluster
-metadata:
-  annotations:
-  name: gke-from-config-sync # name of gke cluster
-spec:
-  forProvider:
-    initialNodeCount: 1
-    location: us-central1
-    minMasterVersion: "1.25"
+# apiVersion: container.gcp.gke.cloud.google.com/v1beta1
+# kind: Cluster
+# metadata:
+#   annotations:
+#   name: gke-from-config-sync # name of gke cluster
+# spec:
+#   forProvider:
+#     initialNodeCount: 1
+#     location: us-central1
+#     minMasterVersion: "1.25"
