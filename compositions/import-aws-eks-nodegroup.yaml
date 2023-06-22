@@ -42,7 +42,7 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.parameters.managementPolicy
       toFieldPath: spec.managementPolicy
-   - type: FromCompositeFieldPath
+    - type: FromCompositeFieldPath
       fromFieldPath: spec.parameters.nodePoolName
       toFieldPath: metadata.annotations[crossplane.io/external-name]
       toFieldPath: metadata.annotations.name
