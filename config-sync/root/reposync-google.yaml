@@ -28,6 +28,7 @@ spec:
     # If you move the configs to a different branch, update the branch here
     branch: main
     dir: config-sync/namespaces/google
+    gcpServiceAccountEmail: resource-accelerator-gcp-sa@anthos-multi-cloud-335819.iam.gserviceaccount.com
     # We recommend securing your source repository.
     # Other supported auth: `ssh`, `cookiefile`, `token`, `gcenode`.
     auth: none
