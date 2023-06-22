@@ -77,6 +77,10 @@ spec:
       - type: string
         string:
           fmt: "%s-akscluster"
+    - type: ToCompositeFieldPath
+      fromFieldPath: status.atProvider.kubernetesVersion
+      toFieldPath: status.version
+    
   - name: clusterbootstrap
     base:
       apiVersion: containerattached.gcp.gke.cloud.google.com/v1beta1
