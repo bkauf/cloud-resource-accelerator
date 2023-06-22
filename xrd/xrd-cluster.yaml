@@ -96,6 +96,8 @@ spec:
                 type: string
               region:
                 type: string
+              version:
+                type: string
     additionalPrinterColumns:
     - name: clusterName
       type: string
