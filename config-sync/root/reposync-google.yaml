@@ -28,6 +28,7 @@ spec:
     # If you move the configs to a different branch, update the branch here
     branch: main
     dir: config-sync/namespaces/google
+    auth: gcpserviceaccount 
     gcpServiceAccountEmail: service-261832825633@gcp-sa-test-yakima.iam.gserviceaccount.com
     # We recommend securing your source repository.
     # Other supported auth: `ssh`, `cookiefile`, `token`, `gcenode`.
