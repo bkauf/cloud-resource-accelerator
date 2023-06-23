@@ -1,14 +1,16 @@
-# ROOT_REPO/namespaces/NAMESPACE/sync-rolebinding.yaml
- kind: RoleBinding
- apiVersion: rbac.authorization.k8s.io/v1
- metadata:
-   name: syncs-repo
-   namespace: google
- subjects:
- - kind: ServiceAccount
-   name: ns-reconciler-google
-   namespace: config-management-system
- roleRef:
-   kind: ClusterRole
-   name: admin
-   apiGroup: rbac.authorization.k8s.io
+# Used to give access to sync CRs to the Google namespace
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: syncs-repo
+  namespace: google
+  labels:
+    rbac.authorization.k8s.io/aggregate-to-admin: "true"
+subjects:
+- kind: ServiceAccount
+  name: ns-reconciler-google
+  namespace: config-management-system
+roleRef:
+  kind: ClusterRole
+  name: admin
+  apiGroup: rbac.authorization.k8s.io
