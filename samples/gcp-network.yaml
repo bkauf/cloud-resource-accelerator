@@ -1,0 +1,7 @@
+apiVersion: compute.gcp.gke.cloud.google.com/v1beta1
+kind: Network
+metadata:
+  name: skynet
+spec:
+  forProvider:
+    autoCreateSubnetworks: false

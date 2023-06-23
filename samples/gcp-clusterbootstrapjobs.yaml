@@ -1,0 +1,19 @@
+apiVersion: containerattached.gcp.gke.cloud.google.com/v1beta1
+kind: ClusterBootstrapJob
+metadata:
+  name: installmanifest
+  labels:
+    name: attachedclusterbootstrap
+spec:
+  forProvider:
+    clusterConfig:
+      project: "gcpprojectnumber"
+      id: "clustername"
+      location: us-east4
+      platformVersion: "1.26.0-gke.2"
+    clusterCredentials:
+      source: Secret
+      secretRef:
+        namespace: default
+        key: kubeconfig
+        name: secretname

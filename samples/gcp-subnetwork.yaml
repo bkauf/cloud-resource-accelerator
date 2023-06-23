@@ -1,0 +1,14 @@
+apiVersion: compute.gcp.gke.cloud.google.com/v1beta1
+kind: Subnetwork
+metadata:
+  name: subnet1
+spec:
+  forProvider:
+    ipCidrRange: 10.1.1.0/24
+    networkSelector:
+      matchLabels:
+        acme.com/name: vpcname
+    region: us-central1
+    secondaryIpRange:
+      - ipCidrRange: 192.168.10.0/24
+        rangeName: test-secondary-range-update1
