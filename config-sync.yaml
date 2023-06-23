@@ -6,9 +6,9 @@ metadata:
   namespace: config-management-system
 spec:
   sourceType: git
-  sourceFormat: unstructured
+  sourceFormat: hierarchy
   git:
     repo: https://github.com/bkauf/cloud-resource-accelerator
     auth: none
-    dir: config-sync/root
+    dir: config-sync
     branch: main
