@@ -1,0 +1,8 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: KeyPair
+metadata:
+  name: examplekp
+spec:
+  forProvider:
+    publicKey: <public-key>
+    region: us-east-1

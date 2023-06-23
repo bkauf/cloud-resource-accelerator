@@ -1,0 +1,11 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: NetworkInterface
+metadata:
+  name: example-ni
+spec:
+  forProvider:
+    privateIps:
+      - 172.16.12.100
+    region: us-east-1
+    subnetIdRef:
+      name: subnet1

@@ -1,0 +1,12 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: NATGateway
+metadata:
+  name: examplengt
+spec:
+  forProvider:
+    connectivityType: private
+    region: us-east-1
+    subnetIdRef:
+      name: subnet2
+    tags:
+      Name: natgw

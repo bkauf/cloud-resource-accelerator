@@ -1,0 +1,11 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: RouteTableAssociation
+metadata:
+  name: example
+spec:
+  forProvider:
+    region: us-east-1
+    routeTableIdRef:
+      name: sample
+    subnetIdRef:
+      name: subnet1
