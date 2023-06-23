@@ -1,0 +1,13 @@
+apiVersion: eks.aws.gke.cloud.google.com/v1beta1
+kind: ClusterAuth
+metadata:
+  name: clustauth
+spec:
+  forProvider:
+    clusterNameSelector:
+      matchLabels:
+        sample.io/example-name: example
+    region: us-east-1
+  writeConnectionSecretToRef:
+    name: cluster-conn
+    namespace: default

@@ -1,0 +1,13 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: SecurityGroup
+metadata:
+  name: sample
+spec:
+  forProvider:
+    description: Allow inbound
+    name: allow_tls
+    region: us-east-1
+    tags:
+      Name: allow_tls
+    vpcIdRef:
+      name: vpc-us1

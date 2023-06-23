@@ -1,0 +1,9 @@
+apiVersion: kms.aws.gke.cloud.google.com/v1beta1
+kind: Key
+metadata:
+  name: samplekmks
+spec:
+  forProvider:
+    deletionWindowInDays: 14
+    description: sample KMS Key
+    region: us-east-1

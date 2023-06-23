@@ -1,0 +1,9 @@
+apiVersion: iam.aws.gke.cloud.google.com/v1beta1
+kind: InstanceProfile
+metadata:
+  name: sample
+spec:
+  forProvider:
+    roleSelector:
+      matchLabels:
+        sample.io/example-name: role2

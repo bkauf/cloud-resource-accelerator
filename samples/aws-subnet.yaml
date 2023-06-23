@@ -1,0 +1,11 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: Subnet
+metadata:
+  name: subnet4
+spec:
+  forProvider:
+    availabilityZone: us-east-1b
+    cidrBlock: 172.16.11.0/24
+    region: us-east-1
+    vpcIdRef:
+      name: vpc-us1

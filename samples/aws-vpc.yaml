@@ -1,0 +1,8 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: VPC
+metadata:
+  name: sample-vpc
+spec:
+  forProvider:
+    cidrBlock: 10.10.10.0/24
+    region: us-east-1

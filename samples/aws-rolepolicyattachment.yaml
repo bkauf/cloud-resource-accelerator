@@ -1,0 +1,11 @@
+apiVersion: iam.aws.gke.cloud.google.com/v1beta1
+      kind: RolePolicyAttachment
+      metadata:
+        name: cluster-policy1
+      spec:
+        forProvider:
+          policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+          roleSelector:
+            matchControllerRef: true
+            matchLabels:
+              role: controlplane
