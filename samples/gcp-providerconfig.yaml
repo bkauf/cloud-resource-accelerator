@@ -1,0 +1,12 @@
+apiVersion: gcp.gke.cloud.google.com/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  projectID: my-project-id
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: gcp-creds
+      key: creds
