@@ -1,0 +1,13 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: Instance
+metadata:
+  name: ec2test
+spec:
+  forProvider:
+    ami: ami-06ae0e97bcb59038c
+    instanceType: t3.medium
+    networkInterface:
+      - deviceIndex: 0
+        networkInterfaceIdRef:
+          name: test
+    region: us-east-1

@@ -1,0 +1,23 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: DefaultRouteTable
+metadata:
+  annotations:
+    meta.sample.io/example-id: ec2/v1beta1/defaultroutetable
+  name: example
+spec:
+  forProvider:
+    defaultRouteTableIdSelector:
+      matchLabels:
+        sample.io/example-name: example
+    region: us-east-1
+    route:
+      - cidrBlock: 10.0.1.0/24
+        gatewayIdSelector:
+          matchLabels:
+            sample.io/example-name: example
+      - egressOnlyGatewayIdSelector:
+          matchLabels:
+            sample.io/example-name: example
+        ipv6CidrBlock: ::/0
+    tags:
+      Name: example

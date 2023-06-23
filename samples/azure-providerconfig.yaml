@@ -1,0 +1,11 @@
+apiVersion: azure.gke.cloud.google.com
+kind: ProviderConfig
+metadata:
+  name: default-azure
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: azure-creds
+      key: creds

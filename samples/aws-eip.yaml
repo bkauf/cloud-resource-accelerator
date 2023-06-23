@@ -1,0 +1,10 @@
+apiVersion: ec2.aws.gke.cloud.google.com/v1beta1
+kind: EIP
+metadata:
+  name: example
+spec:
+  forProvider:
+    instanceRef:
+      name: example-instance
+    region: us-east-1
+    vpc: true
