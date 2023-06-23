@@ -1,0 +1,11 @@
+apiVersion: network.azure.gke.cloud.google.com/v1beta1
+kind: VirtualNetwork
+metadata:
+  name: us-skynet
+spec:
+  forProvider:
+    addressSpace:
+      - 10.0.0.0/16
+    location: East Us
+    resourceGroupNameRef:
+      name: abcrg

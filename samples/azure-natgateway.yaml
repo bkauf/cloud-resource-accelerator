@@ -1,0 +1,10 @@
+apiVersion: network.azure.gke.cloud.google.com/v1beta1
+kind: NATGateway
+metadata:
+  name: mynatgw
+spec:
+  forProvider:
+    location: East Us
+    resourceGroupNameSelector:
+      matchLabels:
+        sample.io/example-name: myrg

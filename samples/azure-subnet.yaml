@@ -1,0 +1,13 @@
+apiVersion: network.azure.gke.cloud.google.com/v1beta1
+kind: Subnet
+metadata:
+  name: subneta
+spec:
+  forProvider:
+    addressPrefixes:
+      - 10.0.2.0/24
+    enforcePrivateLinkServiceNetworkPolicies: true
+    resourceGroupNameRef:
+      name: abcrg
+    virtualNetworkNameRef:
+      name: skynet1

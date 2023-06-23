@@ -1,0 +1,11 @@
+apiVersion: network.azure.gke.cloud.google.com/v1beta1
+kind: PublicIP
+metadata:
+  name: example
+spec:
+  forProvider:
+    allocationMethod: Static
+    location: East Us
+    resourceGroupNameSelector:
+      matchLabels:
+        testing.io/example-name: example-ip

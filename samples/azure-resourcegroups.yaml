@@ -1,0 +1,7 @@
+apiVersion: azure.azure.gke.cloud.google.com/v1beta1
+kind: ResourceGroup
+metadata:
+  name: my-rg
+spec:
+  forProvider:
+    location: East Us

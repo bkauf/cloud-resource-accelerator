@@ -1,0 +1,9 @@
+apiVersion: authorization.azure.gke.cloud.google.com/v1beta1
+kind: RoleAssignment
+metadata:
+  name: sample
+spec:
+  forProvider:
+    principalId: xxxxxxx
+    roleDefinitionName: Disk Backup Reader
+    scope: xxxxx
