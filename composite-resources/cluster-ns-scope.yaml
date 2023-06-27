@@ -2,8 +2,6 @@ apiVersion: demo.anthos.com/v1
 kind: Cluster
 metadata:
   name: cluster-2
-  labels:
-    cluster-owner: abc
 spec:
   compositionRef:
     name: cluster-gcp-gke  # Possible values cluster-gcp-gke, cluster-aws-eks, cluster-azure-aks
