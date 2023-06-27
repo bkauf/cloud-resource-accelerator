@@ -41,3 +41,9 @@ spec:
             small: Standard_D2_v2
             medium: Standard_B4ms
             large: Standard_D8s_v3
+    - type: ToCompositeFieldPath
+      fromFieldPath: status.atProvider.orchestratorVersion
+      toFieldPath: status.nodePoolVersion
+    - type: ToCompositeFieldPath
+      fromFieldPath: metadata.annotations[crossplane.io/external-name]
+      toFieldPath: status.externalName
