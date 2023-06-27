@@ -49,3 +49,9 @@ spec:
             small: e2-small
             medium: e2-medium
             large: e2-standard-2
+    - type: ToCompositeFieldPath
+      fromFieldPath: status.atProvider.version
+      toFieldPath: status.nodePoolVersion
+    - type: ToCompositeFieldPath
+      fromFieldPath: metadata.annotations[crossplane.io/external-name]
+      toFieldPath: status.externalName
