@@ -64,5 +64,8 @@ spec:
           medium: t3.medium
           large: t3.large
     - type: ToCompositeFieldPath
-      fromFieldPath: status.atProvider.status
-      toFieldPath: status.nodePoolStatus
+      fromFieldPath: status.atProvider.releaseVersion
+      toFieldPath: status.nodePoolVersion
+    - type: ToCompositeFieldPath
+      fromFieldPath: metadata.annotations[crossplane.io/external-name]
+      toFieldPath: status.externalName
