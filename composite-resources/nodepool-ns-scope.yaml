@@ -14,7 +14,7 @@ spec:
     nodeSize: medium  # Possible values small, medium, large
     minNodeCount: 1
     #AWS EKS specifics below, leave blank if not using EKS
-    nodeRoleArn: arnxxx: # nodeRoleArn
+    nodeRoleArn: arnxxx # nodeRoleArn
     desiredSize: 2
     maxSize: 3
     subnetIds: #subnetIds used in EKS cluster
