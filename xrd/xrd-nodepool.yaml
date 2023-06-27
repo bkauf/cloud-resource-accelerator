@@ -58,14 +58,16 @@ spec:
                 type: object
           status:
             type: object
-            description: "NodePool Status"
+            description: "NodePool Details"
             properties:
-              nodePoolStatus:
+              nodePoolVersion:
+                type: string
+              externalName:
                 type: string
     additionalPrinterColumns:
     - name: nodePoolName
       type: string
-      jsonPath: ".status.clusterName"
-    - name: nodePool
+      jsonPath: ".status.externalName"
+    - name: Version
       type: string
-      jsonPath: ".status.nodePoolStatus"
+      jsonPath: ".status.nodePoolVersion"
