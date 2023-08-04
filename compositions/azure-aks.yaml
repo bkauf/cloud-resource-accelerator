@@ -134,6 +134,12 @@ spec:
           location: us-east4
           fleet:
           - project: "project/<project-number>"
+          monitoringConfig:
+          - managedPrometheusConfig:
+            - enabled: true
+          loggingConfig:
+          - componentConfig:
+            - enableComponents: ["SYSTEM_COMPONENTS"]
     patches:
     - fromFieldPath: spec.parameters.k8sVersion
       toFieldPath: spec.forProvider.platformVersion
