@@ -5,6 +5,7 @@ metadata:
 spec:
   compositionRef:
     name: cluster-gcp-gke  # Possible values cluster-gcp-gke, cluster-aws-eks, cluster-azure-aks
+  compositeDeletePolicy: Foreground
   parameters:
     location: "us-central1-c" # for AKS EKS us-east-1 is hard coded in the composition aws.eks.yaml
     clusterName: "cluster-2"
