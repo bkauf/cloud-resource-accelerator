@@ -11,7 +11,7 @@ spec:
       - name: default
         nodeCount: 1
         vmSize: Standard_D2_v2
-        vnetSubnetId: ExistingSubnetResourceId # replace with existing subnet id
+        vnetSubnetId: ExistingSubnetResourceId # Setting to use an existing VNET. replace with existing subnet id
     dnsPrefix: akscluster
     identity:
       - type: SystemAssigned

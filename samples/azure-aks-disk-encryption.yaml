@@ -11,7 +11,7 @@ spec:
       - name: default
         nodeCount: 1
         vmSize: Standard_D2_v2
-        diskEncryptionSetId : ExistingDiskEncryptionSetResourceId # replace with existing disk encryption set id
+        diskEncryptionSetId : ExistingDiskEncryptionSetResourceFullId # replace with existing disk encryption set id
     dnsPrefix: akscluster
     identity:
       - type: SystemAssigned
